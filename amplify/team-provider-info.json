@@ -1,0 +1,19 @@
+{
+    "fitness": {
+        "awscloudformation": {
+            "AuthRoleName": "fitnessmomentum-fitness-20190518123719-authRole",
+            "UnauthRoleArn": "arn:aws:iam::938368055181:role/fitnessmomentum-fitness-20190518123719-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::938368055181:role/fitnessmomentum-fitness-20190518123719-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "fitnessmomentum-fitness-20190518123719-deployment",
+            "UnauthRoleName": "fitnessmomentum-fitness-20190518123719-unauthRole",
+            "StackName": "fitnessmomentum-fitness-20190518123719",
+            "StackId": "arn:aws:cloudformation:us-east-1:938368055181:stack/fitnessmomentum-fitness-20190518123719/5a371eb0-79a4-11e9-b26c-0ea1c9c8db82"
+        },
+        "categories": {
+            "auth": {
+                "cognito0d728fbc": {}
+            }
+        }
+    }
+}
