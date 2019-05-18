@@ -1,34 +1,45 @@
 import React, {Component} from 'react';
 
-class Video extends Component {
+const width = 100;
+const height = 100;
 
+class Video extends Component {
   state = {
     source: ""
   }
 
   componentDidMount(){
-    navigator.mediaDevices.getUserMedia({video: true, audio: true})
-      .then(this.handleVideo)
-      .catch(this.videoError)
-  }
+  	var video = document.getElementById('video');
+  	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  		navigator.mediaDevices.getUserMedia({ video: {width: 100, height: 100}}).then(function(stream) {
+	        //video.src = window.URL.createObjectURL(stream);
+	        video.srcObject = stream;
+	        video.play();
+    	});
+  	}
 
-  handleVideo = (stream) => {
-    this.setState({
-      source: window.URL.createObjectURL(stream)
-    })
+   //  const stream = navigator.mediaDevices.getUserMedia({
+   //  'audio': false,
+   //  'video': {
+   //    width: 1000,
+   //    height: 1000,
+   //  },
+  	// });
+  	// var video = document.getElementById('video');
+  	// video.
+
+    console.log("okay")
   }
 
   videoError = (err) => {
     alert(err.name)
   }
 
-
-
   render() {
     return (
-      <video id="video-chat" src={this.state.source} autoPlay="true">
+      <video id="video" width="200" height="200" autoPlay={true}>
       </video>
-    )
+    );
   }
 }
 
