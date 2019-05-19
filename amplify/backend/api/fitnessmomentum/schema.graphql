@@ -1,0 +1,11 @@
+type User @model {
+  id: ID!
+  name: String!
+  posts: [Video] @connection(name: "videos")
+}
+type Video @model {
+  id: ID!
+  title: String!
+  url: String!
+  user: User @connection(name: "videos")
+}

@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "fitnessmomentum",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito0d728fbc",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

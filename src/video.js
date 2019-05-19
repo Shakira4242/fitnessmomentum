@@ -1,4 +1,37 @@
 import React, {Component} from 'react';
+import {start} from './process.js'; 
+import Header from './Header.js';
+// var Peer = require('simple-peer')
+
+
+
+// function gotMedia(stream) {
+
+  // var peer1 = new Peer({ initiator: true, stream: stream })
+  // var peer2 = new Peer()
+
+  // peer1.on('signal', data => {
+  //   peer2.signal(data)
+  // })
+
+  // peer2.on('signal', data => {
+  //   peer1.signal(data)
+  // })
+
+  // peer2.on('stream', stream => {
+  //   // got remote video stream, now let's show it in a video tag
+  //   var video = document.querySelector('video')
+    
+  //   if ('srcObject' in video) {
+  //     video.srcObject = stream
+  //   } else {
+  //     video.src = window.URL.createObjectURL(stream) // for older browsers
+  //   }
+    
+  //   video.play()
+  // })
+// }
+
 
 const width = 100;
 const height = 100;
@@ -9,26 +42,15 @@ class Video extends Component {
   }
 
   componentDidMount(){
-  	var video = document.getElementById('video');
   	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  		navigator.mediaDevices.getUserMedia({ video: {width: 100, height: 100}}).then(function(stream) {
-	        //video.src = window.URL.createObjectURL(stream);
-	        video.srcObject = stream;
-	        video.play();
+      var video = document.getElementById('video');
+    	navigator.mediaDevices.getUserMedia({ video: {width: 100, height: 100}}).then(function(stream) {
+	     //video.src = window.URL.createObjectURL(stream);
+		    video.srcObject = stream;
+	      video.play();
+        start();
     	});
   	}
-
-   //  const stream = navigator.mediaDevices.getUserMedia({
-   //  'audio': false,
-   //  'video': {
-   //    width: 1000,
-   //    height: 1000,
-   //  },
-  	// });
-  	// var video = document.getElementById('video');
-  	// video.
-
-    console.log("okay")
   }
 
   videoError = (err) => {
@@ -37,8 +59,20 @@ class Video extends Component {
 
   render() {
     return (
-      <video id="video" width="200" height="200" autoPlay={true}>
-      </video>
+      <div>
+      <Header/>
+    	<div>
+		    <div id='main'>
+          <video id="video" playsInline style={{
+          transform: "scaleX(-1)",
+          display: "none"}}>
+          </video>
+  		    <canvas id="output" />
+    		</div>
+    		<div id='threeContainer'>
+    		</div>
+  		</div>
+      </div>
     );
   }
 }
